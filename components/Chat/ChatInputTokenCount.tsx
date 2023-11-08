@@ -11,6 +11,7 @@ import { OpenAIModelID, OpenAIModels } from '@/types/openai';
 const PRICING: Record<string, BigNumber> = {
   'gpt-4': BigNumber('0.03').div(1000),
   'gpt-4-32k': BigNumber('0.03').div(1000),
+  'gpt-4-1106-preview': BigNumber('0.01').div(1000),
   'gpt-3.5-turbo': BigNumber('0.002').div(1000),
 };
 
