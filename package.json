@@ -19,7 +19,7 @@
     "js-tiktoken": "^1.0.8",
     "next": "13.2.4",
     "next-i18next": "^13.2.2",
-    "openai": "^3.2.1",
+    "openai": "^4.32.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
