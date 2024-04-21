@@ -6,6 +6,8 @@ export const config = {
   runtime: 'edge',
 };
 
+type ApiModel = Pick<OpenAIModel, 'id' | 'name'>;
+
 const handler = async (req: Request): Promise<Response> => {
   try {
     const { key } = (await req.json()) as {
@@ -48,9 +50,10 @@ const handler = async (req: Request): Promise<Response> => {
 
     const json = await response.json();
 
-    const models: OpenAIModel[] = json.data
+    const models: ApiModel[] = json.data
       .map((model: any) => {
         const model_name = (OPENAI_API_TYPE === 'azure') ? model.model : model.id;
+
         for (const [key, value] of Object.entries(OpenAIModelID)) {
           if (value === model_name) {
             return {
@@ -61,6 +64,17 @@ const handler = async (req: Request): Promise<Response> => {
         }
       })
       .filter(Boolean);
+
+    // GPT-4-Turbo isn't publicly accessible yet, so OpenAI doesn't return them
+    // in the available models request. This can be removed once it's
+    // publicly available.
+    const gpt4TurboModel = 'gpt-4-1106-preview';
+    if (!models.some(model => model.id === gpt4TurboModel)) {
+      models.push({
+        id: gpt4TurboModel,
+        name: OpenAIModels[gpt4TurboModel].name,
+      });
+    }
 
     return new Response(JSON.stringify(models), { status: 200 });
   } catch (error) {
