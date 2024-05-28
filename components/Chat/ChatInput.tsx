@@ -393,7 +393,7 @@ export const ChatInput = ({
           </a>.
         </p>
         <p className='text-yellow-400 text-lg'>
-          gpt.shopify.io will be shutdown on June 3, 2024.
+          gpt.shopify.io will be shutdown on June 3, 2024. Please back up your prompts.
         </p>
         <p>
         {t(
