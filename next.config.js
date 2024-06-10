@@ -13,6 +13,16 @@ const nextConfig = {
 
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        destination: 'https://chat.shopify.io/',
+        permanent: true
+      },
+    ];
+  },
 };
+
 
 module.exports = nextConfig;
