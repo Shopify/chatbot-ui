@@ -15,11 +15,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/:path*',
-        destination: 'https://chat.shopify.io/',
-        permanent: true
-      },
+      // {
+      //   source: '/:path*',
+      //   destination: 'https://chat.shopify.io/',
+      //   permanent: true
+      // },
     ];
   },
 };
